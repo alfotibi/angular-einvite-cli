@@ -1,0 +1,49 @@
+/* Teljes oldal középre igazítása */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Vagy a kívánt magasság, ha nem akarod, hogy teljes oldal magas legyen */
+  }
+  
+  .form-container {
+    width: 100%; /* Beállíthatod a kívánt szélességet */
+    max-width: 300px; /* Vagy bármilyen max szélesség, amit szeretnél */
+  }
+  
+  /* Továbbá, ha a form elemek egymás alatt vannak, biztosítani kell, hogy a form mezők szélessége megfelelő legyen. */
+  input, button, mat-form-field {
+    width: 100%; /* Ez biztosítja, hogy a mezők teljes szélességet foglaljanak el */
+  }
+.mat-dialog-content {
+    width: 100%;
+    max-width: 300px; /* Legfeljebb 300px széles legyen */
+    margin: auto; /* Automatikus külső margó a középre igazításhoz */
+    display: flex;
+    flex-direction: column; /* Elemeket függőlegesen rendezzük el */
+}
+
+/* A gombokat és a form elemeket is bele kell foglalni a fő konténerbe */
+.form-fields {
+    width: 100%; /* Teljes szélesség a belső elemeknek */
+    padding: 0 20px; /* A form elemeinek paddingja */
+}
+
+/* Az input mezők formázása */
+input {
+    width: calc(100% - 40px); /* A padding miatt csökkentjük a szélességet */
+    margin-bottom: 10px; /* Margin az elemek között */
+}
+
+/* Ha van egyedi osztályod a bejelentkezési gombra, itt adhatsz neki stílusokat */
+.login-button {
+    width: 100%;
+    margin-top: 20px; /* Térköz a gomb és az input mezők között */
+}
+
+/* Ezt a stílust pedig add hozzá, hogy a MatDialog is középre igazítódjon */
+.mat-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

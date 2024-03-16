@@ -1,0 +1,49 @@
+@import '../../../styles.scss';
+@import '../../app.component.scss';
+
+
+:host {
+  width: 100%;/* vagy egy konkrét szélesség pixelben, ha szükséges */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  img {
+    // max-width: 80%; // Ez biztosítja, hogy a kép nem lesz szélesebb a konténerénél.
+    // max-height: 85vh;
+    //height: auto; // Ez megőrzi a képarányt.
+    height: 90vh; /* hogy a képarány megmaradjon */
+    transform: scale(1.1); /* növelje a kép méretét 10%-kal */
+    object-fit: cover; /* biztosítja, hogy a kép kitöltse a tartóelemet anélkül, hogy torzulna */
+    overflow: hidden;
+    border: none; /* Eltávolítja a keretet */
+    outline: none; /* Eltávolítja a fókusz keretet */
+    box-shadow: none; /* Eltávolítja az árnyékokat */
+  }
+  
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80vh; // Ez biztosítja, hogy a konténer a teljes képernyő magasságát kitöltse.
+}
+
+@media screen and (max-width: 768px) { // Media query
+  img {
+    width: auto;
+    height: 70vh;
+    margin: auto;
+    max-width: 100vw;
+    max-height: 50vh;
+  }
+
+  .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh; // Ez biztosítja, hogy a konténer a teljes képernyő magasságát kitöltse.
+    max-width: 100vw;
+  }
+}

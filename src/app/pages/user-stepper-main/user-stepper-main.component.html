@@ -1,0 +1,94 @@
+<div>
+    <mat-stepper headerPosition="bottom" #stepper (selectionChange)="onStepChange($event)">
+      <mat-step>
+        <form>
+          <ng-template matStepLabel>CD 1</ng-template>
+          <div id="cd" class="app-container  blurred-background" [class.voted]="flipped">
+            <div id="cd" class="cd" [class.voted]="flipped">
+              <div class="front"> 
+                <app-user-disk-side-a ></app-user-disk-side-a>  
+              </div> 
+              <div class="back">
+                <!-- <app-user-disk-side-b></app-user-disk-side-b>   -->
+                <app-user-disk-side-a ></app-user-disk-side-a>  
+              </div>
+            </div>
+         </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <form>
+          <ng-template matStepLabel>CD 2</ng-template>
+          
+          <!-- <div class="app-container">
+            <div class="back"> 
+              <app-user-disk-side-b></app-user-disk-side-b>
+            </div>
+           <div class="btn-container">
+              <animated-arrow (onClick)="doClick('left')"
+              direction="left">
+
+              </animated-arrow>
+                <animated-arrow (onClick)="doClick('right')"
+                direction="right">
+
+              </animated-arrow>
+           </div>
+         </div> -->
+         <div id="cd" class="app-container  blurred-background" [class.voted]="flipped">
+          <div id="cd" class="cd" [class.voted]="flipped">
+            <div class="front"> 
+              <app-user-disk-side-b></app-user-disk-side-b>
+              <!-- <app-user-disk-side-a ></app-user-disk-side-a>   -->
+            </div> 
+            <div class="back">
+              <app-user-disk-side-b></app-user-disk-side-b>
+            </div>
+          </div>
+       </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <form>
+          <ng-template matStepLabel>Program</ng-template>
+          <div class="app-container blurred-background">
+            <div>
+              <app-user-program-presentation></app-user-program-presentation>
+            </div>
+           <!-- <div class="btn-container">
+              <animated-arrow (onClick)="doClick('left')"
+              direction="left">
+
+              </animated-arrow>
+                <animated-arrow (onClick)="doClick('right')"
+                direction="right">
+
+              </animated-arrow>
+           </div> -->
+         </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Regisztráció</ng-template>
+          
+        <div class="app-container  blurred-background">
+          <div>
+            <div>
+              <app-user-main-view></app-user-main-view>
+            </div>
+          </div>
+          
+         <!-- <div class="btn-container">
+            <animated-arrow (onClick)="doClick('left')"
+            direction="left">
+
+            </animated-arrow>
+              <animated-arrow (onClick)="doClick('right')"
+              direction="right">
+
+            </animated-arrow>
+         </div> -->
+       </div>
+      </mat-step>
+    </mat-stepper>
+  </div>

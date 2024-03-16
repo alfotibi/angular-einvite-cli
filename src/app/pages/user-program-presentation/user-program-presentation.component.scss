@@ -1,0 +1,116 @@
+// user-program-presentation.component.scss
+.card-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem;
+    margin: 3em;
+    max-width: 800px; // maximum szélesség korlátozása
+    max-height: 62vh;
+    width: 100%; // teljes szélesség használata
+    margin: auto; // középre igazítás
+  }
+
+
+.mat-success {
+  background-color: #3b3d3f;
+  color: #fff;
+}
+
+.header-container {
+  display: flex;
+  align-items: center; /* Vertikálisan középre igazítja a címet és a gombot */
+  justify-content: space-between; /* Szétosztja a helyet a cím és a gomb között */
+}
+
+.header-container h2 {
+  margin-right: 0.3rem; /* Ad egy kis helyet a cím és a gomb közé */
+}
+
+
+h2 {
+  //color: #3cd0a9;
+  color: #fff;
+  font-size: calc(1rem + 1.3vw); // Dinamikus méretezés a képernyő szélességétől függően
+  margin-bottom: 0.5rem; // térköz a cím és a lista között
+  
+  @supports (-webkit-text-stroke: 1px #000) or (text-stroke: 1px #000) {
+    -webkit-text-stroke: 1px #000; /* Chrome, Safari, stb. */
+    text-stroke: 1px #000; /* Szabványos szintaxis, ha támogatja a böngésző */
+  }
+}
+  
+
+  // .program-title h2 p {
+  //   // color: #3cd0a9;
+  //   color: #fff;
+  //   margin-bottom: 0.5rem; // térköz a cím és a lista között
+  //   font-size: calc(0.8rem + 2vw); // Nagyobb skálázás
+    
+  //   @supports (-webkit-text-stroke: 1px #000) or (text-stroke: 1px #000) {
+  //     -webkit-text-stroke: 1px #000; /* Chrome, Safari, stb. */
+  //     text-stroke: 1px #000; /* Szabványos szintaxis, ha támogatja a böngésző */
+  //   }
+  // }
+
+  .custom-list-item p {
+    color: #FFFFFF; // Fehér szövegszín
+    line-height: 0.6;
+    padding: 0.5rem 0;
+    font-size: calc(0.6rem + 1.2vw);
+  }
+  
+  .mat-list-item p {    
+    line-height: 1.6; // sorköz
+    padding: 0.5rem 0; // padding a listaelemek között
+    font-size: calc(0.7rem + 2vw); // Nagyobb skálázás
+  }
+  
+  .program-user-control {
+    display: flex;
+    //justify-content: flex-end; // gombok jobbra igazítása
+  }
+  
+  button {
+    margin-right: 1rem; // gombhoz jobb oldali margó
+  }
+  
+  @media print {
+    .program-user-control
+    /* Más elemek, amiket nem szeretnél kinyomtatni */
+    {
+      display: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    // .card-container {
+    //   width: 30%;
+    //   padding: 1rem;
+    //   max-width: 80vh;
+    //   max-height: 76vh;
+    // }
+
+    .card-container {
+      width: 90%; // Nagyobb szélesség a mobil nézetben
+      padding: 1rem; // Kisebb padding
+      max-width: 90vw; // Rugalmasabb max szélesség
+      max-height: none; // Az magassági korlátozás eltávolítása
+    }
+  
+
+    .program-title h2 p {
+      //font-size: calc(1rem + 1vw); // Kisebb képernyőkön kisebb méret
+      font-size: calc(0.9rem + 2vw);
+    }
+  
+    .mat-list-item p {
+      //font-size: calc(0.8rem + 1vw); // Kisebb képernyőkön kisebb méret
+      font-size: calc(0.8rem + 2vw);
+    }
+  
+    /* További reszponzív stílusok */
+  }
+  

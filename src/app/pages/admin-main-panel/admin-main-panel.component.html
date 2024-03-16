@@ -1,0 +1,141 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+  
+      <!-- Position Column -->
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef> No. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+
+      <!-- Keresztnév -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> E-mail cím  </th>
+        <td mat-cell *matCellDef="let element"> {{element.Email ?? '-'}} </td>
+      </ng-container>
+  
+      <!-- Name Column -->
+      <!-- <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> Családnév </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef> Családnév </th>
+        <td mat-cell *matCellDef="let element" 
+            (dblclick)="startEdit(element, 'FirstName')"
+            [class.editable]="isEditing(element, 'FirstName')">
+          <span *ngIf="!isEditing(element, 'FirstName')">{{ element.FirstName }}</span>
+          <input *ngIf="isEditing(element, 'FirstName')"
+                 [(ngModel)]="element.FirstName"
+                 (blur)="stopEdit()"
+                 (keyup.enter)="stopEdit()">
+        </td>
+      </ng-container>
+
+      <!-- Keresztnév -->
+      <!-- <ng-container matColumnDef="sirname">
+        <th mat-header-cell *matHeaderCellDef> Keresztnév </th>
+        <td mat-cell *matCellDef="let element"> {{element.sirname}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="sirname">
+        <th mat-header-cell *matHeaderCellDef> Keresztnév </th>
+        <td mat-cell *matCellDef="let element" 
+            (dblclick)="startEdit(element, 'LastName')"
+            [class.editable]="isEditing(element, 'LastName')">
+          <span *ngIf="!isEditing(element, 'LastName')">{{ element.LastName }}</span>
+          <input *ngIf="isEditing(element, 'LastName')"
+                 [(ngModel)]="element.LastName"
+                 (blur)="stopEdit()"
+                 (keyup.enter)="stopEdit()">
+        </td>
+      </ng-container>
+  
+      <!-- Weight Column -->
+      <!-- <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef> Szállás igénylése </th>
+        <td mat-cell *matCellDef="let element"> {{element.accomodation}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="menu">
+        <th mat-header-cell *matHeaderCellDef> Menü </th>
+        <td mat-cell *matCellDef="let element" 
+            (dblclick)="startEdit(element, 'IsVegan')"
+            [class.editable]="isEditing(element, 'IsVegan')">
+          <span *ngIf="!isEditing(element, 'IsVegan')">{{ element.IsVegan ? 'Vegetáriánus' : 'Normál'  }}</span>
+          <input *ngIf="isEditing(element, 'IsVegan')"
+                 [(ngModel)]="element.IsVegan"
+                 (blur)="stopEdit()"
+                 (keyup.enter)="stopEdit()">
+        </td>
+      </ng-container>
+  
+      <!-- Symbol Column -->
+      <!-- <ng-container matColumnDef="accomodation">
+        <th mat-header-cell *matHeaderCellDef> Menű típus </th>
+        <td mat-cell *matCellDef="let element"> {{element.accomodation}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="accomodation">
+        <th mat-header-cell *matHeaderCellDef>  Szállás igénylése </th>
+        <td mat-cell *matCellDef="let element" 
+            (dblclick)="startEdit(element, 'RequiresAccommodation')"
+            [class.editable]="isEditing(element, 'RequiresAccommodation')">
+          <span *ngIf="!isEditing(element, 'RequiresAccommodation')">{{ element.RequiresAccommodation ? '✔' : '✗' }}</span>
+          <input *ngIf="isEditing(element, 'RequiresAccommodation')"
+                 [(ngModel)]="element.RequiresAccommodation"
+                 (blur)="stopEdit()"
+                 (keyup.enter)="stopEdit()">
+        </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="allergies">
+        <th mat-header-cell *matHeaderCellDef> Allergiák </th>
+        <td mat-cell *matCellDef="let element"> {{element.allergies ?? '-'}} </td>
+      </ng-container> -->
+      <ng-container matColumnDef="allergies">
+        <th mat-header-cell *matHeaderCellDef> Allergiák </th>
+        <td mat-cell *matCellDef="let element" 
+            (dblclick)="startEdit(element, 'Allergies')"
+            [class.editable]="isEditing(element, 'Allergies')">
+          <span *ngIf="!isEditing(element, 'Allergies')"> {{element.Allergies ?? '-'}}</span>
+          <input *ngIf="isEditing(element, 'Allergies')"
+                 [(ngModel)]="element.allergies"
+                 (blur)="stopEdit()"
+                 (keyup.enter)="stopEdit()">
+        </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="delete">
+        <th mat-header-cell *matHeaderCellDef> Törlés </th>
+        <td mat-cell *matCellDef="let element"> 
+          <button mat-icon-button color="warn" (click)="deleteElement(element)">
+            <mat-icon>
+              delete
+            </mat-icon>
+          </button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+
+  </div>
+  <div >
+    <br>
+    
+    <h3>
+      <p><b><u>Összefoglaló</u></b></p>
+    </h3>
+    <p>
+      <b> Visszaigazolták összesen: </b> {{ recomputeTotals(this.dataSource) }} <i>személy.</i><br/>
+      <b>Normál menük száma: </b> {{ normalMenuCount }} <i>db.</i><br/>
+      <b>Vegetáriánus menük száma: </b> {{vegetarianMenuCount}} <i>db.</i><br/>
+      <b>Szállást igényel: </b> {{accomodatinCount}} <i>személy.</i><br/>
+    </p>
+  </div>
+  

@@ -1,0 +1,27 @@
+
+<div class="client_logo MB30">
+    <img class="" src="{{ logoUrl }}" />
+</div>
+    <div class="">
+        <mat-dialog-content class="fullWidthWrapper" (keydown.enter)="login()">
+            <div class="login-container">
+                <div class="form-container">
+                  <div class="form-row">
+                    <h1 mat-dialog-title>Login</h1>
+                    <mat-form-field appearance="fill">
+                        <mat-label>User</mat-label>
+                        <input matInput [(ngModel)]="user">
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Password</mat-label>
+                        <input matInput [type]="'password'" [(ngModel)]="password">
+                    </mat-form-field>
+                    <mat-error class="alert alert-danger" *ngIf="error_message !== ''">{{error_message}}</mat-error>
+                    <mat-dialog-actions>
+                        <button mat-raised-button color="primary" class=" btn-block mb-1" (click)="login()">Login</button>
+                        </mat-dialog-actions>
+                  </div>
+                </div>
+              </div>
+        </mat-dialog-content>
+    </div>

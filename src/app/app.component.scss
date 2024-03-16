@@ -1,0 +1,45 @@
+:host {
+  --background-url: url('../assets/img/COPERTA.jpg');
+}
+
+#background {
+  width: 100vw;
+  height: 100vh;
+  background-image: var(--background-url);
+  background-size: cover;
+}
+
+footer {
+    position: sticky;
+    background-color: #f0f0f0;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  footer nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  footer nav ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  footer nav ul li:last-child {
+    margin-right: 0;
+  }
+
+
+.centered-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  height: 100vh; /* Ez biztosítja, hogy a konténer a teljes képernyő magasságát kitöltse */
+  width: 100vw; /* Ez biztosítja, hogy a konténer a teljes képernyő szélességét kitöltse */
+  text-align: center;
+  position: relative;
+}

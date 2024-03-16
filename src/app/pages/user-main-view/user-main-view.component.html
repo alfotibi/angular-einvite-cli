@@ -1,0 +1,52 @@
+<!-- Styling for the Bootstrap grid system -->
+<div class="rsvp">
+  <div class="add-member-button-container">
+    <!-- <h2>Kérem, jellezzék vissza hány vendégre számíthatunk az önök részérôl:</h2>
+    <button (click)="openAddNewMemberDialog()" mat-mini-fab color="#3cd0a9" aria-label="Add new family member who'll join.">
+      <mat-icon>
+        <span class="material-symbols-outlined">
+          person_add
+          </span>
+      </mat-icon>
+    </button>
+     -->
+    <div class="header-container">
+      <h2>Kérem, jellezzék vissza hány vendégre számíthatunk az önök részérôl:</h2>
+      <button (click)="openAddNewMemberDialog()" mat-icon-button color="success" aria-label="Add new family member who'll join.">
+        <mat-icon>person_add</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="card-container">
+    <section class="container">
+      <div class="element" *ngFor="let member of members; let i = index ">
+
+        <mat-card class="example-card">
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            
+            <mat-card-title>{{member.FirstName + " " + member.LastName}}</mat-card-title>
+            <mat-card-subtitle *ngIf="member.Email"> {{member.Email}} </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p *ngIf="member.Allergies.length > 0"> Allergiák:
+              <span *ngFor="let allergy of member.Allergies; let last = last">{{ allergy }}<span *ngIf="!last">, </span></span>
+            </p>
+            <!-- <p  *ngIf="member.Allergies.length > 0"> Allergiák: {{member.Allergies}} </p> -->
+          </mat-card-content>
+          <mat-card-actions>
+            <button (click)="deleteMember(i)" mat-mini-fab color="warn" aria-label="Example icon button with a delete icon">
+              <mat-icon>
+                  delete
+              </mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </section>
+  </div>
+  <div>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <button mat-raised-button (click)="submitInvitation()" *ngIf="members.length > 0">{{submitButtonText}}</button>
+  </div>
+</div>

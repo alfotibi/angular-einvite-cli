@@ -1,0 +1,98 @@
+<div class="form">
+  <form [formGroup]="memberDescription" (keydown.enter)="safeSaveMember()" (keydown.escape)="safeDiscardMember()">
+    <div class="form-fields">
+      <mat-form-field>
+        <mat-label>Családnév</mat-label>
+         <!-- <input matInput placeholder="Családnév" [formControl]="memberDescription.controls.FirstName"> -->
+         <input matInput placeholder="Családnév.." [formControl]="memberDescription.controls.FirstName" required>
+          @if (memberDescription.controls.FirstName.invalid) {
+            <mat-error class="errors">{{getLastNameErrorMessage()}}</mat-error>
+          }
+      </mat-form-field>
+    </div>
+    <div class="form-fields">
+      <mat-form-field>
+        <mat-label>Keresztnév</mat-label>
+        <!-- <input matInput placeholder="Keresztnév" [formControl]="memberDescription.controls.LastName"> -->
+        <input matInput placeholder="Keresztnév.." [formControl]="memberDescription.controls.LastName" required>
+        @if (memberDescription.controls.LastName.invalid) {
+          <mat-error class="errors">{{getLastNameErrorMessage()}}</mat-error>
+        }
+      </mat-form-field>
+    </div>  
+    <div class="form-fields" *ngIf="memberEmailAddressIsRequested">
+      <mat-form-field>
+        <mat-label>E-mail cím</mat-label>
+        <input matInput placeholder="E-mail cím.." [formControl]="memberDescription.controls.Email" required>
+        @if (memberDescription.controls.Email.invalid) {
+          <mat-error class="errors">{{getEmailErrorMessage()}}</mat-error>
+        }
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-divider></mat-divider>
+      <h4>
+        <mat-label><b>Szállás igénylés:</b></mat-label>
+      </h4>
+      <mat-radio-group [formControl]="memberDescription.controls.RequiresAccommodation">
+        <mat-radio-button value="yes">Igen</mat-radio-button>
+        <mat-radio-button value="no">Nem</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div>
+      <mat-divider></mat-divider>
+      <h4>
+        <mat-label><b>Menű típus:</b></mat-label>
+      </h4>
+      <mat-radio-group [formControl]="memberDescription.controls.IsVegan">
+        <mat-radio-button value="yes">Vegetáriánus</mat-radio-button>
+        <mat-radio-button value="no">Normál</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <mat-divider></mat-divider>
+
+    <div>
+      <!-- A kiválasztható allergiák -->
+      <div class="form-fields">
+        <h4>
+          <mat-label><b>Allergiák:</b></mat-label>
+        </h4>
+        
+        <mat-checkbox *ngFor="let allergy of allergies" 
+                      [value]="allergy"
+                      (change)="handleAllergyChange($event)">
+          {{ allergy }}
+        </mat-checkbox>
+  
+        <!-- Egyéni allergia hozzáadása -->
+        <!-- <mat-form-field *ngIf="customAllergy">
+          <input matInput placeholder="Egyéni allergia" 
+                 formControlName="CustomAllergies">
+        </mat-form-field> -->
+        <mat-checkbox (change)="toggleCustomAllergyField()">
+          Egyéb allergia
+        </mat-checkbox>
+        
+      
+        <div class="form-fields" *ngIf="showCustomAllergyField">
+          <mat-form-field>
+            <mat-label>Más allergiák:</mat-label>
+            <input matInput placeholder="Példaul: allergia1, allergia2, ..." [formControl]="memberDescription.controls.CustomAllergies">
+          </mat-form-field>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="form-fields">
+      <button
+      (click)="safeSaveMember()"
+      mat-raised-button
+      matTooltip="Pár/Családtag mentése.">Kész</button>
+      <button
+      (click)="safeDiscardMember()"
+      mat-raised-button
+      matTooltip="Pár/Családtag törlése.">Mégsem</button>
+    </div>
+  </form>
+</div>
