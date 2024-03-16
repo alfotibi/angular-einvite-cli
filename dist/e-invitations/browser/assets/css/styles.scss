@@ -1,0 +1,84 @@
+  // .form {
+  //   position: relative;
+  //   display: flex;
+  //   top: 2%;
+  //   left: 2%;
+  //   width: 70% 20%;
+  //   padding: 2%;
+  //   transform: translate(0%, -1%);
+  //   margin: auto;
+  //   //background: rgba(0,0,0,.5);
+  //   box-sizing: border-box;
+  //   box-shadow: 0 15px 25px rgba(0,0,0,.2);
+  //   border-radius: 10px;
+  // }
+ 
+  // .form h2 {
+  //   margin: 0 0 30px;
+  //   padding: 0;
+  //   text-align: center;
+  // }
+ 
+  // .form .form-fields {
+  //   position: relative;
+  // }
+ 
+  // .form .form-fields input {
+  //   width: 100%;
+  //   padding: 10px 0;
+  //   font-size: 16px;
+  //   border: none;
+  //   outline: none;
+  //   background: transparent;
+  // }
+  // .form .form-fields label {
+  //   position: absolute;
+  //   top:0;
+  //   left: 0;
+  //   padding: 10px 0;
+  //   font-size: 16px;
+  //   pointer-events: none;
+  //   transition: .5s;
+  // // }
+
+  // .errors {
+  //   display: flex;
+  //   font-size: 10px;
+  //   margin-bottom: 5%;
+  // }
+  .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    max-width: 500px; /* A form maximum szélességét korlátozza, hogy ne legyen túl széles nagyobb képernyőkön */
+    margin: 5% auto; /* A form középre helyezése és kis függőleges térköz */
+    padding: 2%;
+    background: rgba(0, 0, 0, 0.5);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    box-shadow: none; /* Ez eltávolítja az árnyékot a form körül */
+    background: none; /* Ez átlátszóvá teszi a hátteret */
+  }
+  
+  /* Az inputok és label-ek további stílusai */
+  .form .form-fields input,
+  .form .form-fields mat-form-field {
+    width: 100%;
+    /* További stílusok... */
+  }
+  
+  /* Az .errors osztály már jól van definiálva */
+  .errors {
+    font-size: 10px;
+    margin-bottom: 5%;
+  }
+  
+  /* Reszponzív CSS az űrlap számára */
+  @media (max-width: 768px) {
+    .form {
+      width: 90%; /* Kisebb képernyőkön szélesebb űrlap */
+      margin-top: 10%; /* Több hely a felső részen */
+    }
+  }
