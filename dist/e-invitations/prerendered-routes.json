@@ -1,8 +1,0 @@
-{
-  "routes": [
-    "/admin",
-    "/admin-panel",
-    "/stepper",
-    "/user"
-  ]
-}
