@@ -7,8 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "serve:ssr:eInvitations": "node dist/e-invitations/server/server.mjs"
+    "test": "ng test"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +24,7 @@
     "@angular/router": "^17.1.0",
     "@angular/ssr": "^17.1.1",
     "express": "^4.18.2",
+    "lodash": "^4.17.21",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
