@@ -1,0 +1,27 @@
+# Netlify konfigurációs fájl
+
+# Build beállítások
+[build]
+# Build parancs, ami a statikus fájlokat és a funkciókat létrehozza
+command = "npm run build"
+
+# Közzététel mappa, ahol a statikus fájlokat el kell helyezni
+publish = "dist/e-invitations/browser"
+
+# Funkciók beállításai
+[functions]
+# Funkciók könyvtára, ahol az Edge Functions találhatók
+directory = ".netlify/functions"
+
+# Redirect beállítások
+[[redirects]]
+# Az összes útvonalra vonatkozó redirect
+from = "/*"
+# Az új útvonal
+to = "/index.html"
+# Redirect típusa
+status = 200
+
+# Az Angular SSR Edge Function beállításai
+[[plugins]]
+package = "@netlify/angular-runtime"
