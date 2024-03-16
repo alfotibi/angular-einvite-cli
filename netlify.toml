@@ -1,3 +1,3 @@
 [build]
 command = "ng build --prod"
-publish = "dist/<project-name>"
+publish = "dist/e-invitations"
